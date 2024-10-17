@@ -33,3 +33,33 @@ CREATE TABLE table1 (id INT, name VARCHAR(45));
 INSERT INTO table1 VALUES(1, 'Virat'), (2, 'Sachin'), (3, 'Dhoni'), (4, 'ABD');
 
 SELECT * FROM table1;
+
+
+
+
+# Commands used to host mariadb-server Server on AWS EC2 Instance
+
+sudo su -
+
+## Step 1: Update the system
+
+sudo apt update
+
+## Step 2: Install mariadb-server
+
+yum -y install mariadb-server
+
+## Step 3: Enable of mariadb
+
+systemctl enable mariadb
+
+## Step 4: Start of mariadb
+
+systemctl start mariadb
+
+## Step 4: Login to mariadb as a root
+
+mysql -h {paste-rds-endpoint-here} -P 3306 -u rdsuser -p
+
+
+

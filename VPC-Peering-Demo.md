@@ -1,4 +1,4 @@
-## VPC Peering Demo - CloudFormation Template
+## VPC Peering Demo - CloudFormation Template#
 
 ```bash
 Description:  VPC Peering Demo

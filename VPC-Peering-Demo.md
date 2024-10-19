@@ -221,5 +221,27 @@ Resources:
         - !Ref VPCASecurityGroup
       ServiceName: !Sub com.amazonaws.${AWS::Region}.ssmmessages
       VpcId: !Ref VPCA
+ VPCPeeringConnection:
+  Type: AWS::EC2::VPCPeeringConnection
+  Properties:
+    VpcId: !Ref VPCA
+    PeerVpcId: !Ref VPCB
+    PeerRegion: !Ref AWS::Region
+    Tags:
+      - Key: Name
+        Value: VPC Peering Connection between VPCA and VPCB
+RouteAtoB:
+  Type: AWS::EC2::Route
+  Properties:
+    RouteTableId: !Ref RouteTableA
+    DestinationCidrBlock: 10.17.0.0/16
+    VpcPeeringConnectionId: !Ref VPCPeeringConnection
+
+RouteBtoA:
+  Type: AWS::EC2::Route
+  Properties:
+    RouteTableId: !Ref RouteTableB
+    DestinationCidrBlock: 10.16.0.0/16
+    VpcPeeringConnectionId: !Ref VPCPeeringConnection
       
  ```
